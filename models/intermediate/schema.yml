@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  # Intermediate models will be added here as the project grows
+  # Example structure:
+  # - name: int_customers_aggregated
+  #   description: "Intermediate model for aggregated customer data"
+  #   columns:
+  #     - name: customer_id
+  #       description: "Customer identifier"
+  #       tests:
+  #         - unique
+  #         - not_null

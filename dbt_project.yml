@@ -37,6 +37,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   my_new_project:
-    # Applies to all files under models/example/
-    example:
+    # Staging models - materialized as views for performance
+    staging:
+      +materialized: view
+    
+    # Intermediate models - materialized as ephemeral to avoid storage
+    intermediate:
+      +materialized: ephemeral
+    
+    # Mart models - materialized as tables for end-user consumption
+    marts:
       +materialized: table

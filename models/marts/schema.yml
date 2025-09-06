@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  # Mart models will be added here as the project grows
+  # Example structure:
+  # - name: customers
+  #   description: "Final customer mart with all customer information"
+  #   columns:
+  #     - name: customer_id
+  #       description: "Customer identifier"
+  #       tests:
+  #         - unique
+  #         - not_null
+  #     - name: customer_name
+  #       description: "Customer full name"
+  #       tests:
+  #         - not_null
