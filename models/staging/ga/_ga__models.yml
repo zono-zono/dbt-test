@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: stg_ga__events
+    description: "Staging model for GA4 events data with flattened event parameters and user properties"
+    columns:
+      - name: event_date
+        description: "The date on which the event was recorded (YYYYMMDD format)"
+        tests:
+          - not_null
+      - name: event_timestamp
+        description: "The time (in microseconds, UTC) when this event was logged"
+        tests:
+          - not_null
+      - name: event_name
+        description: "The name of the event"
+        tests:
+          - not_null
+      - name: user_pseudo_id
+        description: "A pseudo ID for the user"
+        tests:
+          - not_null
+      - name: ga_session_id
+        description: "GA session ID extracted from event parameters"
+        tests:
+          - not_null
+      - name: page_location
+        description: "The page URL where the event occurred"
+      - name: page_title
+        description: "The title of the page where the event occurred"
+      - name: transaction_id
+        description: "Transaction ID for ecommerce events"
+      - name: event_value
+        description: "Event value for ecommerce events"
+      - name: currency
+        description: "Currency code for ecommerce events"
+
+  - name: stg_ga__sessions
+    description: "Staging model for GA4 sessions with aggregated session-level metrics"
+    columns:
+      - name: user_pseudo_id
+        description: "A pseudo ID for the user"
+        tests:
+          - not_null
+      - name: ga_session_id
+        description: "GA session ID"
+        tests:
+          - not_null
+      - name: event_date
+        description: "The date of the session"
+        tests:
+          - not_null
+      - name: session_start_timestamp
+        description: "Timestamp when the session started"
+        tests:
+          - not_null
+      - name: session_end_timestamp
+        description: "Timestamp when the session ended"
+        tests:
+          - not_null
+      - name: total_events
+        description: "Total number of events in the session"
+        tests:
+          - not_null
+      - name: page_views
+        description: "Number of page views in the session"
+      - name: purchases
+        description: "Number of purchases in the session"
+      - name: total_event_value
+        description: "Total event value for the session"
+      - name: session_duration_seconds
+        description: "Duration of the session in seconds"
+      - name: is_bounce
+        description: "Whether the session was a bounce (single page view)"

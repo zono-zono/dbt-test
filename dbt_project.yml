@@ -40,10 +40,16 @@ models:
     # Staging models - materialized as views
     staging:
       +materialized: view
+      # GA staging models
+      ga:
+        +materialized: view
     
     # Intermediate models - materialized as ephemeral
     intermediate:
       +materialized: ephemeral
+      # GA intermediate models
+      ga:
+        +materialized: ephemeral
     
     # Marts models - materialized as tables
     marts:
@@ -56,4 +62,7 @@ models:
         +materialized: table
       # Sales models  
       sales:
+        +materialized: table
+      # GA marts models
+      ga:
         +materialized: table
