@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  # Intermediate models configuration
+  # These models contain complex business logic
+  # Materialization: ephemeral (default)
+  # Naming convention: int_[entity]_[action]

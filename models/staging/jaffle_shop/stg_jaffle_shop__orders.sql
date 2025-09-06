@@ -2,5 +2,5 @@
 -- Use the `ref` function to select from other models
 
 select *
-from {{ ref('stg_jaffle_shop__customers') }}
+from {{ ref('my_first_dbt_model') }}
 where id = 1

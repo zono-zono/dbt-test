@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  # Source tables configuration
+  # Define your source tables here
+  # Example:
+  # - name: jaffle_shop
+  #   tables:
+  #     - name: customers
+  #     - name: orders

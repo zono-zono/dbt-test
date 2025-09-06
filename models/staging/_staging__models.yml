@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  # Staging models configuration
+  # These models standardize and clean source data
+  # Materialization: view (default)
+  # Naming convention: stg_[source]__[entity]
