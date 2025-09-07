@@ -1,4 +1,8 @@
-{{ config(materialized="view") }}
+{{ config(
+    materialized='view',
+    schema='stg_common',
+    location='US'
+) }}
 
 with events as (
   select
@@ -81,7 +85,6 @@ with events as (
 
     -- Items array（必要なら別モデルで UNNEST）
     items
-  from `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
-  where SAFE_CAST(_TABLE_SUFFIX AS INT64) between 20201101 and 20201231
+  from `src_ga4.events_20210131`
 )
 select * from events

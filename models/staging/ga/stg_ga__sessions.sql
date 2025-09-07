@@ -1,5 +1,6 @@
 {{ config(
-    materialized='view'
+    materialized='view',
+    schema='stg_common'
 ) }}
 
 with session_events as (
@@ -22,7 +23,6 @@ with session_events as (
         geo_city,
         device_category,
         device_os,
-        device_browser,
         platform,
         engagement_time_msec,
         event_value,
@@ -111,18 +111,7 @@ session_aggregated as (
             partition by user_pseudo_id, ga_session_id 
             order by event_timestamp 
             rows between unbounded preceding and unbounded following
-        ) as session_device_os,
-        first_value(device_browser) over (
-            partition by user_pseudo_id, ga_session_id 
-            order by event_timestamp 
-            rows between unbounded preceding and unbounded following
-        ) as session_device_browser,
-        first_value(platform) over (
-            partition by user_pseudo_id, ga_session_id 
-            order by event_timestamp 
-            rows between unbounded preceding and unbounded following
-        ) as session_platform
-        
+        ) as session_device_os
     from session_events
 ),
 
@@ -154,8 +143,6 @@ session_deduped as (
         session_city,
         session_device_category,
         session_device_os,
-        session_device_browser,
-        session_platform,
         
         -- Calculate session duration
         (session_end_timestamp - session_start_timestamp) / 1000000 as session_duration_seconds,
@@ -164,7 +151,6 @@ session_deduped as (
         case when page_views = 1 then 1 else 0 end as is_bounce
         
     from session_aggregated
-    qualify row_number() over (partition by user_pseudo_id, ga_session_id order by event_timestamp) = 1
 )
 
 select * from session_deduped
