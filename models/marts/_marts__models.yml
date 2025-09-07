@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  # Marts models configuration
-  # These are the final business models
-  # Materialization: table (recommended)
-  # Naming convention: dim_[entity] or fct_[process]
