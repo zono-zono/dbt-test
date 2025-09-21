@@ -1,0 +1,6 @@
+version: 2
+sources:
+  - name: raw
+    schema: src_common
+    tables:
+      - name: dailyActivity_merged
