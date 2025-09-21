@@ -66,3 +66,10 @@ models:
       # GA marts models
       ga:
         +materialized: table
+seeds:
+  my_new_project:
+    weightLogInfo_merged:
+      +column_types:
+        Id: bigint
+        ActivityMinute: string   # timestamp にしたいなら後で変換
+        Steps: int
