@@ -1,4 +1,4 @@
-{{ config(schema='stg_fitbit') }}
+{{ config(schema='stg_fitbit', tags=['daily-0900']) }}
 
 with source as (
 
