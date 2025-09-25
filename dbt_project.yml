@@ -66,6 +66,8 @@ models:
       # GA marts models
       ga:
         +materialized: table
+      fitbit_mart:
+        +materialized: table
 seeds:
   my_new_project:
     weightLogInfo_merged:
